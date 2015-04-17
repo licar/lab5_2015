@@ -67,7 +67,6 @@ public:
 	//	(1/2) - (1/6) = (1/3)
 	//	(1/2) - 1     = (-1/2)
 	//	1 - (1/2)     = (1/2)
-	CRational operator -(CRational const& other) const;
 	//////////////////////////////////////////////////////////////////////////
 
 
@@ -201,5 +200,6 @@ unsigned GCD(unsigned a, unsigned b);
 unsigned LCM(unsigned a, unsigned b);
 
 const CRational operator + (const CRational &num1, const CRational &num2);
+const CRational operator - (const CRational &num1, const CRational &num2);
 //const CRational operator == (const CRational &num1, const CRational &num2);
 //const CRational operator != (const CRational &num1, const CRational &num2);

@@ -188,13 +188,13 @@ BOOST_AUTO_TEST_CASE(TestBinaryMinusOperator)
 	}
 
 	{
-		CRational r = CRational(1, 2) - CRational(1);
+		CRational r = CRational(1, 2) - 1;
 		BOOST_CHECK_EQUAL(r.GetNumerator(), -1);
 		BOOST_CHECK_EQUAL(r.GetDenominator(), 2);
 	}
 
 	{
-		CRational r = CRational(1) - CRational(1, 2);
+		CRational r = 1 - CRational(1, 2);
 		BOOST_CHECK_EQUAL(r.GetNumerator(), 1);
 		BOOST_CHECK_EQUAL(r.GetDenominator(), 2);
 	}
