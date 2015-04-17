@@ -122,16 +122,15 @@ const CRational operator + (const CRational &num1, const CRational &num2)
 
 
 //////////////////////////////////////////////////////////////////////////
-//const CRational operator == (const CRational &num1, const CRational &num2)
-//{
-//	return CRational(num1.GetNumerator() * (l / num1.GetDenominator()) + num2.GetNumerator() * (l / num2.GetDenominator()), l);
-//}
-//
-//const CRational operator != (const CRational &num1, const CRational &num2)
-//{
-//	const unsigned l = LCM(num1.GetDenominator(), num2.GetDenominator());
-//	return CRational(num1.GetNumerator() * (l / num1.GetDenominator()) + num2.GetNumerator() * (l / num2.GetDenominator()), l);
-//}
+const bool operator == (const CRational &num1, const CRational &num2)
+{
+	return (num1.GetNumerator() == num2.GetNumerator() && num1.GetDenominator() == num2.GetDenominator());
+}
+
+const bool operator != (const CRational &num1, const CRational &num2)
+{
+	return !(num1 == num2);
+}
 //////////////////////////////////////////////////////////////////////////
 
 
