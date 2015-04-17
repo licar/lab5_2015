@@ -20,11 +20,14 @@ struct RationalFixture
 
 BOOST_FIXTURE_TEST_SUITE(Rational, RationalFixture)
 
-BOOST_AUTO_TEST_CASE(IsEqualToZeroByDeafault)
+BOOST_AUTO_TEST_CASE(IsqualToZeroByDeafault)
 {
 	BOOST_CHECK_EQUAL(defaultRational.GetNumerator(), 0);
 	BOOST_CHECK_EQUAL(defaultRational.GetDenominator(), 1);
 }
+
+
+
 
 BOOST_AUTO_TEST_CASE(CanBeConstructedFromInteger)
 {
@@ -80,8 +83,12 @@ BOOST_AUTO_TEST_CASE(CanBeDefinedByNumeratorAndDenominator)
 // Пример использования:
 //	CRational r(3, 5)
 //	cout << r.ToDouble(); // Должно вывести 0.6
+BOOST_AUTO_TEST_CASE(CanReturnDecimal)
+{
+	CRational rational(3, 5);
+	BOOST_CHECK_CLOSE(rational.ToDouble(), 0.6, DBL_EPSILON);
+}
 //////////////////////////////////////////////////////////////////////////
-
 
 
 
@@ -269,9 +276,8 @@ BOOST_AUTO_TEST_CASE(UnaryPlus)
 //	например: 7/15
 //////////////////////////////////////////////////////////////////////////
 
-
-
 BOOST_AUTO_TEST_SUITE_END()
+
 
 BOOST_AUTO_TEST_CASE(TestGCD)
 {
