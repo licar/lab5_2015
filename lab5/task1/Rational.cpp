@@ -42,6 +42,11 @@ unsigned GCD(unsigned a, unsigned b)
 	return (a != 0) ? a : 1;
 }
 
+unsigned LCM(unsigned x, unsigned y)
+{
+	return (x / GCD(x, y) * y);
+}
+
 //////////////////////////////////////////////////////////////////////////
 // TODO: 1. Реализовать метод ToDouble() согласно заданию
 //////////////////////////////////////////////////////////////////////////
@@ -57,7 +62,11 @@ unsigned GCD(unsigned a, unsigned b)
 
 
 //////////////////////////////////////////////////////////////////////////
-// TODO: 3. Реализовать бинарный +
+CRational CRational::operator + (const CRational &num) const
+{
+	unsigned l = LCM(m_denominator, num.m_denominator);
+	return CRational(m_numerator * (l / m_denominator) + num.m_numerator * (l / num.m_denominator), l);
+}
 //////////////////////////////////////////////////////////////////////////
 
 

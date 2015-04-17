@@ -107,12 +107,28 @@ BOOST_AUTO_TEST_CASE(CanBeDefinedByNumeratorAndDenominator)
 
 
 //////////////////////////////////////////////////////////////////////////
-// TODO: 3. Реализовать бинарный +
-// Возвращает результат сложения двух рациональных чисел, 
-//	рационального числа с целым, целого числа с рациональным.
-//	(1/2) + (1/6) = (2/3)
-//	(1/2) + 1     = (3/2)
-//	1 + (1/2)     = (3/2)
+BOOST_AUTO_TEST_CASE(TestBinaryPlus)
+{
+	{
+		CRational rational1(1, 2), rational2(1, 6);
+		CRational rational = rational1 + rational2;
+		BOOST_CHECK_EQUAL(rational.GetNumerator(), 2);
+		BOOST_CHECK_EQUAL(rational.GetDenominator(), 3);
+	}
+	{
+		CRational rational1(1, 2), rational2(1);
+		CRational rational = rational1 + rational2;
+
+		BOOST_CHECK_EQUAL(rational.GetNumerator(), 3);
+		BOOST_CHECK_EQUAL(rational.GetDenominator(), 2);
+	}
+	{
+		CRational rational1(1), rational2(1, 2);
+		CRational rational = rational1 + rational2;
+		BOOST_CHECK_EQUAL(rational.GetNumerator(), 3);
+		BOOST_CHECK_EQUAL(rational.GetDenominator(), 2);
+	}
+}
 //////////////////////////////////////////////////////////////////////////
 
 
