@@ -48,8 +48,7 @@ public:
 
 
 	//////////////////////////////////////////////////////////////////////////
-	CRational operator+(const CRational &num) const;
-	const CRational operator+(int num) const;
+
 	//////////////////////////////////////////////////////////////////////////
 
 
@@ -193,4 +192,4 @@ private:
 unsigned GCD(unsigned a, unsigned b);
 unsigned LCM(unsigned a, unsigned b);
 
-const CRational operator + (int num1, const CRational &num2);
+const CRational operator + (const CRational &num1, const CRational &num2);

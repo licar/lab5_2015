@@ -62,20 +62,10 @@ unsigned LCM(unsigned x, unsigned y)
 
 
 //////////////////////////////////////////////////////////////////////////
-CRational CRational::operator + (const CRational &num) const
+const CRational operator + (const CRational &num1, const CRational &num2)
 {
-	unsigned l = LCM(m_denominator, num.m_denominator);
-	return CRational(m_numerator * (l / m_denominator) + num.m_numerator * (l / num.m_denominator), l);
-}
-
-const CRational CRational::operator + (int num) const
-{
-	return CRational(m_numerator + m_denominator * num, m_denominator);
-}
-
-const CRational operator + (int num1, const CRational &num2)
-{
-	return num2 + num1;
+	const unsigned l = LCM(num1.GetDenominator(), num2.GetDenominator());
+	return CRational(num1.GetNumerator() * (l / num1.GetDenominator()) + num2.GetNumerator() * (l / num2.GetDenominator()), l);
 }
 //////////////////////////////////////////////////////////////////////////
 
