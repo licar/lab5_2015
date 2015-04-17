@@ -64,8 +64,8 @@ unsigned LCM(unsigned x, unsigned y)
 //////////////////////////////////////////////////////////////////////////
 const CRational operator + (const CRational &num1, const CRational &num2)
 {
-	const unsigned l = LCM(num1.GetDenominator(), num2.GetDenominator());
-	return CRational(num1.GetNumerator() * (l / num1.GetDenominator()) + num2.GetNumerator() * (l / num2.GetDenominator()), l);
+	const unsigned lcm = LCM(num1.GetDenominator(), num2.GetDenominator());
+	return CRational(num1.GetNumerator() * (lcm / num1.GetDenominator()) + num2.GetNumerator() * (lcm / num2.GetDenominator()), lcm);
 }
 //////////////////////////////////////////////////////////////////////////
 
@@ -122,7 +122,16 @@ const CRational operator + (const CRational &num1, const CRational &num2)
 
 
 //////////////////////////////////////////////////////////////////////////
-// TODO: 11. Реализовать операторы == и !=
+//const CRational operator == (const CRational &num1, const CRational &num2)
+//{
+//	return CRational(num1.GetNumerator() * (l / num1.GetDenominator()) + num2.GetNumerator() * (l / num2.GetDenominator()), l);
+//}
+//
+//const CRational operator != (const CRational &num1, const CRational &num2)
+//{
+//	const unsigned l = LCM(num1.GetDenominator(), num2.GetDenominator());
+//	return CRational(num1.GetNumerator() * (l / num1.GetDenominator()) + num2.GetNumerator() * (l / num2.GetDenominator()), l);
+//}
 //////////////////////////////////////////////////////////////////////////
 
 
