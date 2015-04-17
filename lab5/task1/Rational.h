@@ -54,12 +54,7 @@ public:
 
 
 	//////////////////////////////////////////////////////////////////////////
-	// TODO: 3. Реализовать бинарный +
-	// Возвращает результат сложения двух рациональных чисел, 
-	//	рационального числа с целым, целого числа с рациональным.
-	//	(1/2) + (1/6) = (2/3)
-	//	(1/2) + 1     = (3/2)
-	//	1 + (1/2)     = (3/2)
+
 	//////////////////////////////////////////////////////////////////////////
 
 
@@ -84,6 +79,7 @@ public:
 	//	либо целого числа:
 	//	(1/2) += (1/6)  → (2/3)
 	//	(1/2) += 1      → (3/2)
+	CRational& operator +=(CRational const& rational);
 	//////////////////////////////////////////////////////////////////////////
 
 
@@ -202,3 +198,8 @@ private:
 
 // Вычисляет наибольший общий знаменатель чисел a и b
 unsigned GCD(unsigned a, unsigned b);
+unsigned LCM(unsigned a, unsigned b);
+
+const CRational operator + (const CRational &num1, const CRational &num2);
+//const CRational operator == (const CRational &num1, const CRational &num2);
+//const CRational operator != (const CRational &num1, const CRational &num2);

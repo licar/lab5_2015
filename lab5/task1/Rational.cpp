@@ -42,6 +42,11 @@ unsigned GCD(unsigned a, unsigned b)
 	return (a != 0) ? a : 1;
 }
 
+unsigned LCM(unsigned x, unsigned y)
+{
+	return (x / GCD(x, y) * y);
+}
+
 //////////////////////////////////////////////////////////////////////////
 // TODO: 1. Реализовать метод ToDouble() согласно заданию
 double  CRational::ToDouble() const
@@ -68,7 +73,11 @@ CRational const CRational::operator -() const
 
 
 //////////////////////////////////////////////////////////////////////////
-// TODO: 3. Реализовать бинарный +
+const CRational operator + (const CRational &num1, const CRational &num2)
+{
+	const unsigned lcm = LCM(num1.GetDenominator(), num2.GetDenominator());
+	return CRational(num1.GetNumerator() * (lcm / num1.GetDenominator()) + num2.GetNumerator() * (lcm / num2.GetDenominator()), lcm);
+}
 //////////////////////////////////////////////////////////////////////////
 
 
@@ -98,6 +107,13 @@ CRational CRational::operator -(CRational const& other) const
 
 //////////////////////////////////////////////////////////////////////////
 // TODO: 5. Реализовать оператор +=
+CRational& CRational::operator +=(CRational const& rational)
+{
+	m_numerator = m_numerator * rational.m_denominator + rational.m_numerator * m_denominator;
+	m_denominator *= rational.m_denominator;
+	Normalize();
+	return *this;
+}
 //////////////////////////////////////////////////////////////////////////
 
 
@@ -139,7 +155,16 @@ CRational CRational::operator -(CRational const& other) const
 
 
 //////////////////////////////////////////////////////////////////////////
-// TODO: 11. Реализовать операторы == и !=
+//const CRational operator == (const CRational &num1, const CRational &num2)
+//{
+//	return CRational(num1.GetNumerator() * (l / num1.GetDenominator()) + num2.GetNumerator() * (l / num2.GetDenominator()), l);
+//}
+//
+//const CRational operator != (const CRational &num1, const CRational &num2)
+//{
+//	const unsigned l = LCM(num1.GetDenominator(), num2.GetDenominator());
+//	return CRational(num1.GetNumerator() * (l / num1.GetDenominator()) + num2.GetNumerator() * (l / num2.GetDenominator()), l);
+//}
 //////////////////////////////////////////////////////////////////////////
 
 

@@ -138,12 +138,34 @@ BOOST_AUTO_TEST_CASE(UnaryPlus)
 
 
 //////////////////////////////////////////////////////////////////////////
-// TODO: 3. Реализовать бинарный +
-// Возвращает результат сложения двух рациональных чисел, 
-//	рационального числа с целым, целого числа с рациональным.
-//	(1/2) + (1/6) = (2/3)
-//	(1/2) + 1     = (3/2)
-//	1 + (1/2)     = (3/2)
+BOOST_AUTO_TEST_CASE(TestBinaryPlus)
+{
+	{
+		CRational const rational1(1, 2), rational2(1, 6);
+		CRational rational = rational1 + rational2;
+		BOOST_CHECK_EQUAL(rational.GetNumerator(), 2);
+		BOOST_CHECK_EQUAL(rational.GetDenominator(), 3);
+	}
+	{
+		CRational const rational1(1, 4);
+		CRational rational = rational1 + 2;
+
+		BOOST_CHECK_EQUAL(rational.GetNumerator(), 9);
+		BOOST_CHECK_EQUAL(rational.GetDenominator(), 4);
+	}
+	{
+		CRational const rational1(1, 2);
+		CRational rational = 1 + rational1;
+		BOOST_CHECK_EQUAL(rational.GetNumerator(), 3);
+		BOOST_CHECK_EQUAL(rational.GetDenominator(), 2);
+	}
+	{
+		CRational const rational1(1, 2), rational2(-1, 3);
+		CRational rational = rational1 + rational2;
+		BOOST_CHECK_EQUAL(rational.GetNumerator(), 1);
+		BOOST_CHECK_EQUAL(rational.GetDenominator(), 6);
+	}
+}
 //////////////////////////////////////////////////////////////////////////
 
 
@@ -188,6 +210,22 @@ BOOST_AUTO_TEST_CASE(TestBinaryMinusOperator)
 //	либо целого числа:
 //	(1/2) += (1/6)  → (2/3)
 //	(1/2) += 1      → (3/2)
+BOOST_AUTO_TEST_CASE(AssigningAddition)
+{
+	{
+		CRational r1(1, 2);
+		CRational r2(1, 6);
+		r1 += r2;
+		BOOST_CHECK_EQUAL(r1.GetNumerator(), 2);
+		BOOST_CHECK_EQUAL(r1.GetDenominator(), 3);
+	}
+	{
+		CRational r1(1, 2);
+		r1 += 1;
+		BOOST_CHECK_EQUAL(r1.GetNumerator(), 3);
+		BOOST_CHECK_EQUAL(r1.GetDenominator(), 2);
+	}
+}
 //////////////////////////////////////////////////////////////////////////
 
 
@@ -309,6 +347,17 @@ BOOST_AUTO_TEST_CASE(TestGCD)
 	BOOST_CHECK_EQUAL(GCD(0, 2), 2u);
 	BOOST_CHECK_EQUAL(GCD(2, 0), 2u);
 	BOOST_CHECK_EQUAL(GCD(0, 0), 1u);
+}
+
+BOOST_AUTO_TEST_CASE(TestLCM)
+{
+	BOOST_CHECK_EQUAL(LCM(2, 3), 6u);
+	BOOST_CHECK_EQUAL(LCM(3, 2), 6u);
+	BOOST_CHECK_EQUAL(LCM(12, 8), 24u);
+	BOOST_CHECK_EQUAL(LCM(8, 12), 24u);
+	BOOST_CHECK_EQUAL(LCM(0, 2), 0u);
+	BOOST_CHECK_EQUAL(LCM(2, 0), 0u);
+	BOOST_CHECK_EQUAL(LCM(0, 0), 0u);
 }
 
 BOOST_AUTO_TEST_CASE(RationalsAreNormalizedAfterCreation)
