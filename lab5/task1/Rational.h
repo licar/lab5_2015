@@ -202,5 +202,6 @@ unsigned LCM(unsigned a, unsigned b);
 
 const CRational operator + (const CRational &num1, const CRational &num2);
 const CRational operator - (const CRational &num1, const CRational &num2);
-//const CRational operator == (const CRational &num1, const CRational &num2);
-//const CRational operator != (const CRational &num1, const CRational &num2);
+
+const bool operator == (const CRational &num1, const CRational &num2);
+const bool operator != (const CRational &num1, const CRational &num2);
