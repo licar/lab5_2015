@@ -75,7 +75,7 @@ const CRational CRational::operator + (int num) const
 
 const CRational operator + (int num1, const CRational &num2)
 {
-	return CRational(num2.GetNumerator() + num2.GetDenominator() * num1, num2.GetDenominator());
+	return num2 + num1;
 }
 //////////////////////////////////////////////////////////////////////////
 
