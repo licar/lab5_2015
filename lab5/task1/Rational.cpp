@@ -65,6 +65,21 @@ unsigned GCD(unsigned a, unsigned b)
 
 //////////////////////////////////////////////////////////////////////////
 // TODO: 4. Реализовать бинарный -
+
+CRational CRational::operator -(CRational const& other) const
+{
+	CRational thisCopy(*this);
+	thisCopy.m_numerator *= other.GetDenominator();
+	thisCopy.m_denominator *= other.GetDenominator();
+
+	CRational otherCopy(other);
+	otherCopy.m_numerator *= GetDenominator();
+	otherCopy.m_denominator *= GetDenominator();
+
+	CRational result(thisCopy.GetNumerator() - otherCopy.GetNumerator(), thisCopy.GetDenominator());
+	result.Normalize();
+	return result;
+}
 //////////////////////////////////////////////////////////////////////////
 
 
