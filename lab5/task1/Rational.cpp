@@ -92,6 +92,13 @@ const CRational operator + (const CRational &num1, const CRational &num2)
 
 //////////////////////////////////////////////////////////////////////////
 // TODO: 5. Реализовать оператор +=
+CRational& CRational::operator +=(CRational const& rational)
+{
+	m_numerator = m_numerator * rational.m_denominator + rational.m_numerator * m_denominator;
+	m_denominator *= rational.m_denominator;
+	Normalize();
+	return *this;
+}
 //////////////////////////////////////////////////////////////////////////
 
 
