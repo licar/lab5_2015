@@ -306,16 +306,30 @@ BOOST_AUTO_TEST_CASE(AssigningSubtraction)
 
 
 
-//////////////////////////////////////////////////////////////////////////
-// TODO: 11. Реализовать операторы == и !=
-// Проверяют равенство (и неравенство) двух рациональных чисел, 
-//	целого и рационального, рационального и целого:
-//	(1/2) == (1/2) → true
-//	(4/1) == 4     → true
-//	3 == (3/1)     → true
-//	(1/2) != (2/3) → true
-//	(1/2) != 7     → true
-//	3 != (2/3)     → true
+/////////////////////////////////////////////////////////////////////////
+BOOST_AUTO_TEST_CASE(TestEqualNumbers)
+{
+	{
+		CRational const rational1(1, 2), rational2(1, 2);
+		BOOST_CHECK_EQUAL(rational1 == rational2, true);
+		BOOST_CHECK_EQUAL(rational1 != rational2, false);
+	}
+	{
+		CRational const rational1(1, 4), rational2(4, 16);
+		BOOST_CHECK_EQUAL(rational1 == rational2, true);
+		BOOST_CHECK_EQUAL(rational1 != rational2, false);
+	}
+	{
+		CRational const rational1(1, 4);
+		BOOST_CHECK_EQUAL(rational1 == 2, false);
+		BOOST_CHECK_EQUAL(rational1 != 2, true);
+	}
+	{
+		CRational const rational1(3);
+		BOOST_CHECK_EQUAL(3 == rational1, true);
+		BOOST_CHECK_EQUAL(3 != rational1, false);
+	}
+}
 //////////////////////////////////////////////////////////////////////////
 
 
