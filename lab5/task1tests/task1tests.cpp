@@ -162,6 +162,22 @@ BOOST_AUTO_TEST_CASE(AssigningAddition)
 // Выполняет уменьшение рационального числа на величину второго рационального либо целого числа :
 // (1/2) -= (1/6)  → (1/3)
 // (1/2) -= 1      → (-1/2)
+BOOST_AUTO_TEST_CASE(AssigningSubtraction)
+{
+	{
+		CRational r1(1, 2);
+		CRational r2(1, 6);
+		r1 -= r2;
+		BOOST_CHECK_EQUAL(r1.GetNumerator(), 1);
+		BOOST_CHECK_EQUAL(r1.GetDenominator(), 3);
+	}
+	{
+		CRational r1(1, 2);
+		r1 -= 1;
+		BOOST_CHECK_EQUAL(r1.GetNumerator(), -1);
+		BOOST_CHECK_EQUAL(r1.GetDenominator(), 2);
+	}
+}
 //////////////////////////////////////////////////////////////////////////
 
 
