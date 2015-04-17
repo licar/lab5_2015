@@ -67,6 +67,16 @@ CRational CRational::operator + (const CRational &num) const
 	unsigned l = LCM(m_denominator, num.m_denominator);
 	return CRational(m_numerator * (l / m_denominator) + num.m_numerator * (l / num.m_denominator), l);
 }
+
+const CRational CRational::operator + (int num) const
+{
+	return CRational(m_numerator + m_denominator * num, m_denominator);
+}
+
+const CRational operator + (int num1, const CRational &num2)
+{
+	return CRational(num2.GetNumerator() + num2.GetDenominator() * num1, num2.GetDenominator());
+}
 //////////////////////////////////////////////////////////////////////////
 
 

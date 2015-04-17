@@ -49,6 +49,7 @@ public:
 
 	//////////////////////////////////////////////////////////////////////////
 	CRational operator+(const CRational &num) const;
+	const CRational operator+(int num) const;
 	//////////////////////////////////////////////////////////////////////////
 
 
@@ -191,3 +192,5 @@ private:
 // Вычисляет наибольший общий знаменатель чисел a и b
 unsigned GCD(unsigned a, unsigned b);
 unsigned LCM(unsigned a, unsigned b);
+
+const CRational operator + (int num1, const CRational &num2);

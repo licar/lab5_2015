@@ -116,15 +116,15 @@ BOOST_AUTO_TEST_CASE(TestBinaryPlus)
 		BOOST_CHECK_EQUAL(rational.GetDenominator(), 3);
 	}
 	{
-		CRational rational1(1, 2), rational2(1);
-		CRational rational = rational1 + rational2;
+		CRational rational1(1, 4);
+		CRational rational = rational1 + 2;
 
-		BOOST_CHECK_EQUAL(rational.GetNumerator(), 3);
-		BOOST_CHECK_EQUAL(rational.GetDenominator(), 2);
+		BOOST_CHECK_EQUAL(rational.GetNumerator(), 9);
+		BOOST_CHECK_EQUAL(rational.GetDenominator(), 4);
 	}
 	{
-		CRational rational1(1), rational2(1, 2);
-		CRational rational = rational1 + rational2;
+		CRational rational1(1, 2);
+		CRational rational = 1 + rational1;
 		BOOST_CHECK_EQUAL(rational.GetNumerator(), 3);
 		BOOST_CHECK_EQUAL(rational.GetDenominator(), 2);
 	}
