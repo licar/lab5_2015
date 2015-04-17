@@ -103,8 +103,31 @@ BOOST_AUTO_TEST_CASE(CanBeDefinedByNumeratorAndDenominator)
 //	+someRational = someOtherRational;
 //////////////////////////////////////////////////////////////////////////
 
+// Унарный минус
+BOOST_AUTO_TEST_CASE(UnaryMinus)
+{
+	const CRational r1 = -CRational(3, 5);
+	const CRational r2 = -CRational(-4, 7);
 
+	BOOST_CHECK_EQUAL(r1.GetNumerator(), -3);
+	BOOST_CHECK_EQUAL(r1.GetDenominator(), 5);
 
+	BOOST_CHECK_EQUAL(r2.GetNumerator(), 4);
+	BOOST_CHECK_EQUAL(r2.GetDenominator(), 7);
+}
+
+// Унарный плюс
+BOOST_AUTO_TEST_CASE(UnaryPlus)
+{
+	const CRational r1 = +CRational(3, 5);
+	const CRational r2 = +CRational(-4, 7);
+
+	BOOST_CHECK_EQUAL(r1.GetNumerator(), 3);
+	BOOST_CHECK_EQUAL(r1.GetDenominator(), 5);
+
+	BOOST_CHECK_EQUAL(r2.GetNumerator(), -4);
+	BOOST_CHECK_EQUAL(r2.GetDenominator(), 7);
+}
 
 //////////////////////////////////////////////////////////////////////////
 // TODO: 3. Реализовать бинарный +

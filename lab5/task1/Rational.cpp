@@ -54,6 +54,17 @@ unsigned GCD(unsigned a, unsigned b)
 //////////////////////////////////////////////////////////////////////////
 
 
+CRational const CRational::operator +() const
+{
+	return *this;
+}
+
+CRational const CRational::operator -() const
+{
+	CRational number(*this);
+	number.m_numerator = -number.m_numerator;
+	return number;
+}
 
 
 //////////////////////////////////////////////////////////////////////////
