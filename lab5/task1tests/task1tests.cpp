@@ -178,6 +178,27 @@ BOOST_AUTO_TEST_CASE(TestBinaryPlus)
 //	(1/2) - (1/6) = (1/3)
 //	(1/2) - 1     = (-1/2)
 //	1 - (1/2)     = (1/2)
+
+BOOST_AUTO_TEST_CASE(TestBinaryMinusOperator)
+{
+	{
+		CRational r = CRational(1, 2) - CRational(1, 6);
+		BOOST_CHECK_EQUAL(r.GetNumerator(), 1);
+		BOOST_CHECK_EQUAL(r.GetDenominator(), 3);
+	}
+
+	{
+		CRational r = CRational(1, 2) - 1;
+		BOOST_CHECK_EQUAL(r.GetNumerator(), -1);
+		BOOST_CHECK_EQUAL(r.GetDenominator(), 2);
+	}
+
+	{
+		CRational r = 1 - CRational(1, 2);
+		BOOST_CHECK_EQUAL(r.GetNumerator(), 1);
+		BOOST_CHECK_EQUAL(r.GetDenominator(), 2);
+	}
+}
 //////////////////////////////////////////////////////////////////////////
 
 

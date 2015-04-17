@@ -85,6 +85,12 @@ const CRational operator + (const CRational &num1, const CRational &num2)
 
 //////////////////////////////////////////////////////////////////////////
 // TODO: 4. Реализовать бинарный -
+
+const CRational operator - (const CRational &num1, const CRational &num2)
+{
+	const unsigned lcm = LCM(num1.GetDenominator(), num2.GetDenominator());
+	return CRational(num1.GetNumerator() * (lcm / num1.GetDenominator()) - num2.GetNumerator() * (lcm / num2.GetDenominator()), lcm);
+}
 //////////////////////////////////////////////////////////////////////////
 
 
