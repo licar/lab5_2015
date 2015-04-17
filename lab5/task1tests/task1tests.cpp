@@ -128,6 +128,12 @@ BOOST_AUTO_TEST_CASE(TestBinaryPlus)
 		BOOST_CHECK_EQUAL(rational.GetNumerator(), 3);
 		BOOST_CHECK_EQUAL(rational.GetDenominator(), 2);
 	}
+	{
+		CRational rational1(1, 2), rational2(-1, 3);
+		CRational rational = rational1 + rational2;
+		BOOST_CHECK_EQUAL(rational.GetNumerator(), 1);
+		BOOST_CHECK_EQUAL(rational.GetDenominator(), 6);
+	}
 }
 //////////////////////////////////////////////////////////////////////////
 
