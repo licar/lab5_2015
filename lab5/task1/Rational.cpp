@@ -72,6 +72,12 @@ unsigned GCD(unsigned a, unsigned b)
 
 //////////////////////////////////////////////////////////////////////////
 // TODO: 5. Реализовать оператор +=
+void CRational::operator +=(CRational const& rational)
+{
+	m_numerator = m_numerator * rational.m_denominator + rational.m_numerator * m_denominator;
+	m_denominator *= rational.m_denominator;
+	Normalize();
+}
 //////////////////////////////////////////////////////////////////////////
 
 

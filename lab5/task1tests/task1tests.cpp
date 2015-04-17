@@ -136,6 +136,22 @@ BOOST_AUTO_TEST_CASE(CanBeDefinedByNumeratorAndDenominator)
 //	либо целого числа:
 //	(1/2) += (1/6)  → (2/3)
 //	(1/2) += 1      → (3/2)
+BOOST_AUTO_TEST_CASE(AssigningAddition)
+{
+	{
+		CRational r1(1, 2);
+		CRational r2(1, 6);
+		r1 += r2;
+		BOOST_CHECK_EQUAL(r1.GetNumerator(), 2);
+		BOOST_CHECK_EQUAL(r1.GetDenominator(), 3);
+	}
+	{
+		CRational r1(1, 2);
+		r1 += 1;
+		BOOST_CHECK_EQUAL(r1.GetNumerator(), 3);
+		BOOST_CHECK_EQUAL(r1.GetDenominator(), 2);
+	}
+}
 //////////////////////////////////////////////////////////////////////////
 
 
