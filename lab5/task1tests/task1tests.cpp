@@ -355,6 +355,25 @@ BOOST_AUTO_TEST_CASE(TestEqualNumbers)
 // TODO: 13. Реализовать оператор вывода рационального числа в выходной поток 
 //	std::ostream в формате <числитель>/<знаменатель>, 
 //	например: 7/15
+BOOST_AUTO_TEST_CASE(TestOutputStream)
+{
+	{
+		std::ostringstream oss;
+		CRational const rational(2, 45);
+		oss << rational;
+		std::string s = oss.str();
+		BOOST_CHECK_EQUAL(s, "2/45");
+	}
+	{
+		std::ostringstream oss;
+		CRational const rational(2, -3);
+		oss << rational;
+		std::string s = oss.str();
+		BOOST_CHECK_EQUAL(s, "-2/3");
+	}
+	
+}
+
 //////////////////////////////////////////////////////////////////////////
 
 
