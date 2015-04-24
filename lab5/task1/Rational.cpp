@@ -1,5 +1,6 @@
 ﻿#include "stdafx.h"
 #include "Rational.h"
+#include <iostream>
 #include <utility>
 
 
@@ -183,6 +184,23 @@ const bool operator != (const CRational &num1, const CRational &num2)
 
 //////////////////////////////////////////////////////////////////////////
 // TODO: 14. Реализовать оператор ввода рационального числа из входного потока 
+std::istream & operator>>(std::istream & stream, CRational & rational)
+{
+	std::streamoff pos = stream.tellg();
+
+	int numerator = 0;
+	int denominator = 0;
+	if ((stream >> numerator) && (stream.get() == '/') && (stream >> denominator))
+	{
+		rational = CRational(numerator, denominator);
+		return stream;
+	}
+
+	stream.seekg(pos);
+	stream.setstate(std::ios_base::failbit | stream.rdstate());
+	return stream;
+}
+
 //////////////////////////////////////////////////////////////////////////
 
 

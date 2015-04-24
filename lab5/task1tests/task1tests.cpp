@@ -3,6 +3,7 @@
 
 #include "stdafx.h"
 #include "../task1/Rational.h"
+#include <sstream>
 
 struct RationalFixture
 {
@@ -363,6 +364,23 @@ BOOST_AUTO_TEST_CASE(TestEqualNumbers)
 // TODO: 14. Реализовать оператор ввода рационального числа из входного потока 
 //	std::istream в формате <числитель>/<знаменатель>, 
 //	например: 7/15
+BOOST_AUTO_TEST_CASE(TestEnterARationalNumberFromInputStream)
+{
+	{
+		std::istringstream iss("7/15");
+		CRational rational;
+		iss >> rational;
+		BOOST_CHECK_EQUAL(7, rational.GetNumerator());
+		BOOST_CHECK_EQUAL(15, rational.GetDenominator());
+	}
+	{
+		std::istringstream iss("-1/3");
+		CRational rational;
+		iss >> rational;
+		BOOST_CHECK_EQUAL(-1, rational.GetNumerator());
+		BOOST_CHECK_EQUAL(3, rational.GetDenominator());
+	}
+}
 //////////////////////////////////////////////////////////////////////////
 
 BOOST_AUTO_TEST_SUITE_END()

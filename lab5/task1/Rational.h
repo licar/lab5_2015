@@ -205,3 +205,4 @@ const CRational operator - (const CRational &num1, const CRational &num2);
 
 const bool operator == (const CRational &num1, const CRational &num2);
 const bool operator != (const CRational &num1, const CRational &num2);
+std::istream & operator>>(std::istream & stream, CRational & rational);
