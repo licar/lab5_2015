@@ -9,6 +9,8 @@
 
 #include <stdio.h>
 #include <tchar.h>
+#include <iostream>
+#include <sstream>
 
 #define BOOST_TEST_MODULE Task1Tests
 #define BOOST_TEST_INCLUDED

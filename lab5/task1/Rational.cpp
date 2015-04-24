@@ -176,6 +176,10 @@ const bool operator != (const CRational &num1, const CRational &num2)
 
 //////////////////////////////////////////////////////////////////////////
 // TODO: 13. Реализовать оператор вывода рационального числа в выходной поток 
+std::ostream& operator << (std::ostream &stream, const CRational &num)
+{
+	return stream << num.GetNumerator() << "/" << num.GetDenominator();
+}
 //////////////////////////////////////////////////////////////////////////
 
 
