@@ -290,6 +290,19 @@ BOOST_AUTO_TEST_CASE(AssigningSubtraction)
 //	либо целое:
 //	(1/2) *= (2/3) → (1/3)
 //	(1/2) *= 3     → (3/2)
+BOOST_AUTO_TEST_CASE(AssigningMultiplication)
+{
+	{
+		CRational r(1, 2);
+		r *= CRational(2, 3);
+		BOOST_CHECK(r == CRational(1, 3));
+	}
+	{
+		CRational r(1, 2);
+		r *= 3;
+		BOOST_CHECK(r == CRational(3, 2));
+	}
+}
 //////////////////////////////////////////////////////////////////////////
 
 

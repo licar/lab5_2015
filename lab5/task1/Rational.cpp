@@ -140,6 +140,13 @@ CRational& CRational::operator -=(CRational const& rational)
 
 //////////////////////////////////////////////////////////////////////////
 // TODO: 9. Реализовать оператор *=
+CRational& CRational::operator *=(CRational const& other)
+{
+	m_numerator *= other.m_numerator;
+	m_denominator *= other.m_denominator;
+	Normalize();
+	return *this;
+}
 //////////////////////////////////////////////////////////////////////////
 
 
