@@ -209,3 +209,5 @@ const bool operator != (const CRational &num1, const CRational &num2);
 
 std::ostream& operator << (std::ostream &stream, const CRational &num);
 std::istream & operator>>(std::istream & stream, CRational & rational);
+
+const CRational operator / (const CRational &num1, const CRational &num2);
