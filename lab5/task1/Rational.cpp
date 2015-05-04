@@ -133,6 +133,10 @@ CRational& CRational::operator -=(CRational const& rational)
 
 //////////////////////////////////////////////////////////////////////////
 // TODO: 8. Реализовать оператор /
+const CRational operator / (const CRational &num1, const CRational &num2)
+{
+	return CRational(num1.GetNumerator() * num2.GetDenominator(), num2.GetNumerator() * num1.GetDenominator());
+}
 //////////////////////////////////////////////////////////////////////////
 
 

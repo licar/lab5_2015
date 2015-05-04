@@ -278,6 +278,31 @@ BOOST_AUTO_TEST_CASE(AssigningSubtraction)
 //	(1/2) ⁄ (2/3) = (3/4)
 //	(1/2) ⁄ 5     = (1/10)
 //	7 ⁄ (2/3)     = (21/2)
+BOOST_AUTO_TEST_CASE(TestDivision)
+{
+	{
+		CRational const rational1(1, 2), rational2(2, 3);
+		CRational rational = rational1 / rational2;
+		BOOST_CHECK_EQUAL(rational.GetNumerator(), 3);
+		BOOST_CHECK_EQUAL(rational.GetDenominator(), 4);
+	}
+	{
+		CRational const rational1(1, 2), rational2(5);
+		CRational rational = rational1 / rational2;
+		BOOST_CHECK_EQUAL(rational.GetNumerator(), 1);
+		BOOST_CHECK_EQUAL(rational.GetDenominator(), 10);
+}
+	{
+		CRational const rational1(7), rational2(2, 3);
+		CRational rational = rational1 / rational2;
+		BOOST_CHECK_EQUAL(rational.GetNumerator(), 21);
+		BOOST_CHECK_EQUAL(rational.GetDenominator(), 2);
+	}
+	{
+		BOOST_CHECK(12 / CRational(8, 3) == CRational(9, 2));
+		BOOST_CHECK(CRational(15, 12) / 9 == CRational(5, 36));
+	}
+}
 //////////////////////////////////////////////////////////////////////////
 
 
