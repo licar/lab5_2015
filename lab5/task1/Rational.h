@@ -140,6 +140,7 @@ public:
 	//	либо целое:
 	//	(1/2) /= (2/3) → (3/4)
 	//	(1/2) /= 3     → (1/6)
+	CRational& operator /=(CRational const& other);
 	//////////////////////////////////////////////////////////////////////////
 
 
@@ -206,8 +207,14 @@ const CRational operator - (const CRational &num1, const CRational &num2);
 
 const bool operator == (const CRational &num1, const CRational &num2);
 const bool operator != (const CRational &num1, const CRational &num2);
+const bool operator > (const CRational &num1, const CRational &num2);
+const bool operator < (const CRational &num1, const CRational &num2);
+const bool operator <= (const CRational &num1, const CRational &num2);
+const bool operator >= (const CRational &num1, const CRational &num2);
+
 
 std::ostream& operator << (std::ostream &stream, const CRational &num);
 std::istream & operator>>(std::istream & stream, CRational & rational);
 
 const CRational operator / (const CRational &num1, const CRational &num2);
+const CRational operator * (const CRational &num1, const CRational &num2);

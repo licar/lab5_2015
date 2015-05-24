@@ -265,6 +265,23 @@ BOOST_AUTO_TEST_CASE(AssigningSubtraction)
 //	(1/2) * (2/3) = (1/3)
 //	(1/2) * (-3)  = (-3/2)
 //	(7*2) / 3     = (14/3)
+
+BOOST_AUTO_TEST_CASE(TestBinaryMultiply)
+{
+	{
+		CRational const rational1(1, 2), rational2(2, 3);
+		CRational rational = rational1 * rational2;
+		BOOST_CHECK_EQUAL(rational.GetNumerator(), 1);
+		BOOST_CHECK_EQUAL(rational.GetDenominator(), 3);
+	}
+	{
+		CRational const rational1(1, 2), rational2(-3);
+		CRational rational = rational1 * rational2;
+		BOOST_CHECK_EQUAL(rational.GetNumerator(), -3);
+		BOOST_CHECK_EQUAL(rational.GetDenominator(), 2);
+	}
+}
+
 //////////////////////////////////////////////////////////////////////////
 
 
@@ -340,6 +357,19 @@ BOOST_AUTO_TEST_CASE(AssigningMultiplication)
 //	либо целое:
 //	(1/2) /= (2/3) → (3/4)
 //	(1/2) /= 3     → (1/6)
+BOOST_AUTO_TEST_CASE(AssigningDivision)
+{
+	{
+		CRational r(1, 2);
+		r /= CRational(2, 3);
+		BOOST_CHECK(r == CRational(3, 4));
+	}
+	{
+	CRational r(1, 2);
+	r /= 3;
+	BOOST_CHECK(r == CRational(1, 6));
+}
+}
 //////////////////////////////////////////////////////////////////////////
 
 
@@ -386,6 +416,29 @@ BOOST_AUTO_TEST_CASE(TestEqualNumbers)
 //	3 >= (8/2)     → false
 //////////////////////////////////////////////////////////////////////////
 
+BOOST_AUTO_TEST_CASE(TestComparisonNumbers)
+{
+	{
+		CRational const rational1(1, 2), rational2(1, 3);
+		BOOST_CHECK_EQUAL(rational1 >= rational2, true);
+	}
+	{
+		CRational const rational1(3, 1), rational2(2);
+		BOOST_CHECK_EQUAL(rational1 > rational2, true);
+	}
+	{
+		CRational const rational1(1, 2), rational2(7);
+		BOOST_CHECK_EQUAL(rational1 < rational2, true);
+	}
+	{
+		CRational const rational1(3), rational2(7, 2);
+		BOOST_CHECK_EQUAL(rational1 <= rational2, true);
+	}
+	{
+		CRational const rational1(3), rational2(8, 2);
+		BOOST_CHECK_EQUAL(rational1 >= rational2, false);
+	}
+}
 
 
 
