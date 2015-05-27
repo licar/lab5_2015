@@ -264,7 +264,7 @@ BOOST_AUTO_TEST_CASE(AssigningSubtraction)
 //	рационального и целого, либо целого и рационального :
 //	(1/2) * (2/3) = (1/3)
 //	(1/2) * (-3)  = (-3/2)
-//	(7*2) / 3     = (14/3)
+//	(7) / 2/3     = (14/3)
 
 BOOST_AUTO_TEST_CASE(TestBinaryMultiply)
 {
@@ -279,6 +279,12 @@ BOOST_AUTO_TEST_CASE(TestBinaryMultiply)
 		CRational rational = rational1 * rational2;
 		BOOST_CHECK_EQUAL(rational.GetNumerator(), -3);
 		BOOST_CHECK_EQUAL(rational.GetDenominator(), 2);
+	}
+	{
+		CRational const rational1(7), rational2(2, 3);
+		CRational rational = rational1 * rational2;
+		BOOST_CHECK_EQUAL(rational.GetNumerator(), 14);
+		BOOST_CHECK_EQUAL(rational.GetDenominator(), 3);
 	}
 }
 
